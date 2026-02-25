@@ -56,7 +56,7 @@ if "latest_audio" not in st.session_state: st.session_state.latest_audio = None 
 def generate_tts_audio(text):
     """Generates speech using Google's free API to save server RAM."""
     with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmp_file:
-        tts = gTTS(text=text, lang='en', slow=False)
+        tts = gTTS(text=text, lang='en', slow=False, tld='co.in') # Using .co.in TLD for better Indian English voice
         tts.save(tmp_file.name)
         
         with open(tmp_file.name, "rb") as f:
