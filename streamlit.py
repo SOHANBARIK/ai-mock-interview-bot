@@ -126,7 +126,7 @@ with st.sidebar:
             docs = st.session_state.vector_store.similarity_search(target_role, k=3)
             context = "\n".join([doc.page_content for doc in docs])
             
-            system_msg = SystemMessage(content=f"Your name is Sohan.You are conducting a technical interview. Use this resume context to ask your first question: {context}")
+            system_msg = SystemMessage(content=f"Your name is Mira.You are conducting a technical interview. Use this resume context to ask your first question: {context}")
             initial_prompt = f"I am applying for the {target_role} role. Introduce yourself briefly and ask me my first interview question based on my experience."
             
             response = llm.invoke([system_msg, HumanMessage(content=initial_prompt)])
