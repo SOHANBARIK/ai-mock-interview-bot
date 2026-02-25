@@ -89,11 +89,11 @@ def generate_evaluation(role):
     with st.spinner("Analyzing Interview Transcript..."):
         transcript = ""
         for msg in st.session_state.messages:
-            role_name = "Interviewer" if msg.type == "ai" else "Candidate"
+            role_name = "Interviewer(Mira)" if msg.type == "ai" else "Candidate"
             transcript += f"{role_name}: {msg.content}\n\n"
 
         eval_prompt = f"""
-        You are an expert technical recruiter evaluating a candidate for the role of {role}.
+        Your name is Mira. You are an expert technical recruiter evaluating a candidate for the role of {role}.
         Review the following interview transcript and provide a detailed evaluation.
         Include:
         1. Overall Score (out of 100)
@@ -192,7 +192,7 @@ if st.session_state.interview_active:
                 st.session_state.messages.append(HumanMessage(content=user_text))
                 st.session_state.chat_history_display.append({"role": "user", "content": user_text})
                 
-                with st.spinner("Interviewer is reviewing your answer..."):
+                with st.spinner("Interviewer Mira is reviewing your answer..."):
                     # Retrieve context
                     docs = st.session_state.vector_store.similarity_search(user_text, k=2)
                     context = "\n".join([doc.page_content for doc in docs])
