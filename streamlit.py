@@ -129,7 +129,7 @@ with st.sidebar:
             system_msg = SystemMessage(content=f"Your name is Sohan. You are conducting a technical interview. Use this resume context to ask your first question: {context}")
             initial_prompt = f"I am applying for the {target_role} role. Introduce yourself briefly and ask me my first interview question based on my experience."
             
-            response = st.session_state.llm.invoke([system_msg, HumanMessage(content=initial_prompt)])
+            response = st.llm.invoke([system_msg, HumanMessage(content=initial_prompt)])
             
             # Save AI text
             st.session_state.messages.append(AIMessage(content=response.content))
